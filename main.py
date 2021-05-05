@@ -1,6 +1,6 @@
 import tkinter as tk
 import logging
-from bitmex import get_contracts
+from connectors.binance_futures import BinanceFuturesClient
 
 logger = logging.getLogger()
 
@@ -20,8 +20,12 @@ logger.addHandler(file_handler)
 
 if __name__ == '__main__':
 
-    bitmex_contracts = get_contracts()
+    binance = BinanceFuturesClient(True)
+    print(binance.get_bid_ask("BTCUSDT"))
     root = tk.Tk()
+    root.mainloop()
+
+    '''
     root.configure(bg="gray12")
 
     i = 0
@@ -38,5 +42,5 @@ if __name__ == '__main__':
         else:
             i += 1
 
-    root.mainloop()
+    '''
 
